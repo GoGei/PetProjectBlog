@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-Index
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'css/blog/css/cover.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navigate_bar.html' with activate='index' %}
+{% endblock %}
+
+{% block body %}
+    <div class="text-center align-items-center justify-content-center cover-container d-flex h-100 p-3 mx-auto flex-column">
+        <main role="main" class="inner cover">
+            <h1 class="cover-heading">Hi there</h1>
+            <p class="lead">This is my pet project. In this project a want to demonstrate my coding skills and
+                knowledge about backend development in form of blog. I will make posts about what
+                I have learned or experienced with and what is applied during this project.</p>
+            <p class="lead">
+                <a href="{% url 'home-about' %}" class="btn btn-lg btn-secondary">Learn more</a>
+            </p>
+        </main>
+    </div>
+{% endblock %}

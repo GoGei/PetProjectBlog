@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-About
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'css/blog/css/blog.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navigate_bar.html' with activate='about' %}
+{% endblock %}
+
+{% block body %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8 blog-main">
+                {% for about in abouts %}
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">About title {{ about }}</h2>
+                        <p class="blog-post-meta">Dates</p>
+                        <p>Text</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <aside class="col-md-4 blog-sidebar">
+                <div class="p-3">
+                    <h4 class="font-italic">Contacts</h4>
+                    <ol class="list-unstyled mb-0">
+                        {% for contact in contacts %}
+                            <li>Content {{ contact }} <a href="#">link</a></li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </aside>
+        </div>
+    </main>
+{% endblock %}

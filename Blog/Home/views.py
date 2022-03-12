@@ -1,17 +1,19 @@
 from django.shortcuts import render
 
 
-def index(request):
+def home_index_view(request):
     return render(request, 'Home/index.html')
 
 
-def posts(request):
-    return render(request, 'Home/posts.html')
+def home_posts_view(request):
+    posts = range(5)
+    return render(request, 'Home/posts.html',
+                  {'posts': posts})
 
 
-def contacts(request):
-    return render(request, 'Home/contacts.html')
-
-
-def about(request):
-    return render(request, 'Home/about.html')
+def home_about_view(request):
+    abouts = range(5)
+    contacts = range(5)
+    return render(request, 'Home/about.html',
+                  {'contacts': contacts,
+                   'abouts': abouts})

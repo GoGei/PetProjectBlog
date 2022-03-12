@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-Posts
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'css/blog/css/blog.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navigate_bar.html' with activate='posts' %}
+{% endblock %}
+
+{% block body %}
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8 blog-main">
+                {% for post in posts %}
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">Title {{ post }}</h2>
+                        <p class="blog-post-meta">Date</p>
+                        <h2>Heading</h2>
+                        <p>Heading</p>
+                        <h3>Sub-heading</h3>
+                        <p>Sub-heading</p>
+                    </div>
+                {% endfor %}
+
+                <nav class="blog-pagination">
+                    <a class="btn btn-outline-primary">Older</a>
+                    <a class="btn btn-outline-secondary">Newer</a>
+                </nav>
+            </div>
+            <aside class="col-md-4 blog-sidebar">
+                <div class="p-3">
+                    <h4 class="font-italic">Sidebar</h4>
+                    <ol class="list-unstyled mb-0">
+                        <li>Content <a href="#">link</a></li>
+                    </ol>
+                </div>
+            </aside>
+        </div>
+    </main>
+{% endblock %}
