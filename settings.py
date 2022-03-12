@@ -43,8 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_hosts'
+    'django_extensions',
+    'django_hosts',
+    'core.User'
 ]
+
+AUTH_USER_MODEL = 'User.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -88,8 +92,8 @@ WSGI_APPLICATION = 'wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
-        'USER': '',
+        'NAME': 'petprojectblog',
+        'USER': 'petprojectblog',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '5432',
