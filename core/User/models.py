@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from core.Utils.Mixins.models import CrmMixin
 
 
 class UserManager(BaseUserManager):
@@ -32,8 +33,8 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-class User(AbstractBaseUser):
-    email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
+class User(CrmMixin, AbstractBaseUser):
+    email = models.EmailField(verbose_name='email address', max_length=255, unique=True, db_index=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
