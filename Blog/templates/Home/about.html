@@ -10,28 +10,63 @@
 {% endblock %}
 
 {% block body %}
-    <main role="main" class="container">
-        <div class="row">
-            <div class="col-md-8 blog-main">
-                {% for about in abouts %}
-                    <div class="blog-post">
-                        <h2 class="blog-post-title">About title {{ about }}</h2>
-                        <p class="blog-post-meta">Dates</p>
-                        <h2>Heading</h2>
-                        <p>Text</p>
-                    </div>
-                {% endfor %}
-            </div>
-            <aside class="col-md-4 blog-sidebar">
-                <div class="p-3">
-                    <h4 class="font-italic">Contacts</h4>
-                    <ol class="list-unstyled mb-0">
-                        {% for contact in contacts %}
-                            <li>Content Content Content Content Content Content <a href="#">link</a></li>
-                        {% endfor %}
-                    </ol>
+    {% if abouts or contacts %}
+        <main role="main" class="container">
+            <div class="row">
+                <div class="col-md-8 blog-main">
+                    <h1>About page</h1>
+                    {% for about in abouts %}
+                        <div class="blog-post">
+                            <h2 class="blog-post-title">{{ about.title }}</h2>
+                            <p class="blog-post-meta">
+                                {% if about.from_date and about.to_date %}
+                                    {{ about.from_date }} - {{ about.to_date }}
+                                {% elif about.from_date %}
+                                    From {{ about.from_date }}
+                                {% endif %}
+                            </p>
+                            {% if  about.heading %}
+                                <h2>{{ about.heading }}</h2>
+                            {% endif %}
+                            <p>{{ about.text }}</p>
+                        </div>
+                    {% empty %}
+                        <h2>No about info added yet by admin</h2>
+                    {% endfor %}
                 </div>
-            </aside>
-        </div>
-    </main>
+                <aside class="col-md-4 blog-sidebar">
+                    <div class="p-3">
+                        <h3 class="font-italic">Contacts</h3>
+                        <ol class="list-unstyled mb-0">
+                            {% for contact in contacts %}
+                                <li>{{ contact.description|truncatechars:40 }}:
+                                    {% with contact.field_type as field_type %}
+                                        {% if field_type == 'phone' %}
+                                            <a href="tel:{{ contact.phone }}">
+                                                {{ contact.phone }}
+                                            </a>
+                                        {% elif field_type == 'link' %}
+                                            <a href="{{ contact.link }}" target="_blank">
+                                                {{ contact.placeholder|default:'link'|truncatechars:40 }}
+                                            </a>
+                                        {% elif field_type == 'email' %}
+                                            <a href="mailto:{{ contact.email }}">
+                                                {{ contact.email|truncatechars:40 }}
+                                            </a>
+                                        {% else %}
+                                            {{ contact.contact_info }}
+                                        {% endif %}
+                                    {% endwith %}
+                                </li>
+                            {% empty %}
+                                <h4>No "Contact" info added by superuser</h4>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    {% else %}
+        {% include 'Home/pages/empty_page.html' with message='Contacts and about info not added yet by admin' %}
+    {% endif %}
 {% endblock %}

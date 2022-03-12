@@ -10,31 +10,39 @@
 {% endblock %}
 
 {% block body %}
-    <main role="main" class="container">
-        <div class="row">
-            <div class="col-md-8 blog-main">
-                {% for post in posts %}
-                    <div class="blog-post">
-                        <h2 class="blog-post-title">Title {{ post }}</h2>
-                        <p class="blog-post-meta">Date</p>
-                        <h2>Heading</h2>
-                        <p>Heading</p>
-                    </div>
-                {% endfor %}
-
-                <nav class="blog-pagination">
-                    <a class="btn btn-outline-primary">Older</a>
-                    <a class="btn btn-outline-secondary">Newer</a>
-                </nav>
-            </div>
-            <aside class="col-md-4 blog-sidebar">
-                <div class="p-3">
-                    <h4 class="font-italic">Sidebar</h4>
-                    <ol class="list-unstyled mb-0">
-                        <li>Content <a href="#">link</a></li>
-                    </ol>
+    {% if posts %}
+        <main role="main" class="container">
+            <h1>Posts page</h1>
+            <div class="row">
+                <div class="col-md-8 blog-main">
+                    {% if posts %}
+                        <nav class="blog-pagination">
+                            <a class="btn btn-outline-primary">Older</a>
+                            <a class="btn btn-outline-secondary">Newer</a>
+                        </nav>
+                    {% endif %}
+                    {% for post in posts %}
+                        <div class="blog-post">
+                            <h2 class="blog-post-title">{{ post.title }}</h2>
+                            <p class="blog-post-meta">{{ post.created_stamp|date:'d-M-Y' }}</p>
+                            {% if post.heading %}
+                                <h2>{{ post.heading }}</h2>
+                            {% endif %}
+                            <p>{{ post.text }}</p>
+                        </div>
+                    {% endfor %}
                 </div>
-            </aside>
-        </div>
-    </main>
+                <aside class="col-md-4 blog-sidebar">
+                    <div class="p-3">
+                        <h4 class="font-italic">Sidebar</h4>
+                        <ol class="list-unstyled mb-0">
+                            <li>Content <a href="#">link</a></li>
+                        </ol>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    {% else %}
+        {% include 'Home/pages/empty_page.html' with message='Posts not added yet by admin' %}
+    {% endif %}
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.db import models
 from core.User.models import User
-from core.Utils.Mixins.models import CrmMixin, ActiveQuerySet
+from core.Utils.Mixins.models import CrmMixin
 
 
 class Posts(CrmMixin):
@@ -8,8 +8,6 @@ class Posts(CrmMixin):
     title = models.CharField(max_length=255)
     heading = models.CharField(max_length=255, null=True)
     text = models.TextField()
-
-    objects = ActiveQuerySet.as_manager()
 
     class Meta:
         db_table = 'posts'

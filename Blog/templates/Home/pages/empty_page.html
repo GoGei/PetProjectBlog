@@ -1,0 +1,15 @@
+{% load static %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'css/blog/css/cover.css' %}">
+{% endblock %}
+
+<div class="text-center align-items-center justify-content-center cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading">This page is empty</h1>
+        <p class="lead">{{ message }}</p>
+        <p class="lead">
+            <a href="{% url 'home-index' %}" class="btn btn-lg btn-secondary">Go home</a>
+        </p>
+    </main>
+</div>

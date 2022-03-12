@@ -5,7 +5,7 @@ from django.conf import settings
 
 class ActiveQuerySet(models.QuerySet):
     def active(self):
-        return self.filter(archived__isnull=True)
+        return self.filter(archived_stamp__isnull=True)
 
     def archive(self, archived_by=None):
         for item in self:
