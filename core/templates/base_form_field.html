@@ -1,0 +1,11 @@
+<div class="form-group {% if field.errors %}has-error{% endif %} {% if field.is_hidden %}d-none{% endif %}">
+    {% if field.field.required %}
+        <label for="{{ field.id_for_label }}"><strong>{{ field.label }}*</strong></label>
+    {% else %}
+        <label for="{{ field.id_for_label }}"><strong>{{ field.label }}</strong></label>
+    {% endif %}
+
+    {{ field }}
+
+    {% include 'base_field_error_block.html' %}
+</div>

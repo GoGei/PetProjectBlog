@@ -75,6 +75,7 @@ TEMPLATES = [
         'DIRS': [
             BASE_DIR + 'Blog/templates/',
             BASE_DIR + 'Admin/templates/',
+            BASE_DIR + 'core/templates/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
