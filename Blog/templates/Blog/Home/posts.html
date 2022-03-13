@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'Blog/base.html' %}
 {% load static %}
 
 {% block extracss %}
@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block navbar %}
-    {% include 'navigate_bar.html' with activate='posts' %}
+    {% include 'Blog/navigate_bar.html' with activate='posts' %}
 {% endblock %}
 
 {% block body %}
@@ -43,6 +43,6 @@
             </div>
         </main>
     {% else %}
-        {% include 'Home/pages/empty_page.html' with message='Posts not added yet by admin' %}
+        {% include 'Blog/Home/pages/empty_page.html' with message='Posts not added yet by admin' %}
     {% endif %}
 {% endblock %}

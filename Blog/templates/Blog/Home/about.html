@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'Blog/base.html' %}
 {% load static %}
 
 {% block extracss %}
@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block navbar %}
-    {% include 'navigate_bar.html' with activate='about' %}
+    {% include 'Blog/navigate_bar.html' with activate='about' %}
 {% endblock %}
 
 {% block body %}
@@ -67,6 +67,6 @@
             </div>
         </main>
     {% else %}
-        {% include 'Home/pages/empty_page.html' with message='Contacts and about info not added yet by admin' %}
+        {% include 'Blog/Home/pages/empty_page.html' with message='Contacts and about info not added yet by admin' %}
     {% endif %}
 {% endblock %}

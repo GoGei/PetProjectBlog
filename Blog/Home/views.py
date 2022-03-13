@@ -5,7 +5,7 @@ from core.Contacts.models import Contacts
 
 
 def home_index_view(request):
-    return render(request, 'Home/index.html')
+    return render(request, 'Blog/Home/index.html')
 
 
 def home_posts_view(request):
@@ -13,13 +13,13 @@ def home_posts_view(request):
     posts = None
     if superuser:
         posts = superuser.posts_set.all().active().ordered()
-    return render(request, 'Home/posts.html',
+    return render(request, 'Blog/Home/posts.html',
                   {'posts': posts})
 
 
 def home_about_view(request):
     contacts = Contacts.objects.active().all()
     abouts = About.objects.active().all().order_by('order_number')
-    return render(request, 'Home/about.html',
+    return render(request, 'Blog/Home/about.html',
                   {'contacts': contacts,
                    'abouts': abouts})
