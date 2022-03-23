@@ -46,9 +46,9 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Blog pages</div>
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="{% url 'posts-list' %}">
                         <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                        Tables
+                        Posts
                     </a>
                 </div>
             </div>
@@ -57,6 +57,15 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid px-4">
+                <h1 class="mt-4">
+                    {% block head-label %}
+                    {% endblock %}
+                </h1>
+
+                <ol class="breadcrumb mb-4">
+                    {% block breadcrumbs %}
+                    {% endblock %}
+                </ol>
                 {% block body %}
                 {% endblock %}
             </div>

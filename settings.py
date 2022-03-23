@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'django_hosts',
+    'django_tables2',
     'core.Utils',
     'core.User',
     'core.Posts',
@@ -159,3 +160,5 @@ STATICFILES_FINDERS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ITEMS_PER_PAGE = 20
