@@ -4,18 +4,39 @@
 </div>
 <div class="row form-group">
     <div class="col-sm-5">Created</div>
-    <div class="col-sm-7">Created by: {{ item.created_by.label }}
-        at {{ item.created_stamp|default:"-"|date:'M. j Y' }}</div>
+    <div class="col-sm-7">
+        {% if item.created_by %}
+            by: {{ item.created_by.label }}
+        {% endif %}
+
+        {% if item.created_stamp %}
+            at {{ item.created_stamp|default:"-"|date:'M. j Y' }}
+        {% endif %}
+    </div>
 </div>
 <div class="row form-group">
     <div class="col-sm-5">Modified</div>
-    <div class="col-sm-7">Modified by: {{ item.modified_by.label }}
-        at {{ item.modified_stamp|default:"-"|date:'M. j Y' }}</div>
+    <div class="col-sm-7">
+        {% if item.modified_by %}
+            by: {{ item.modified_by.label }}
+        {% endif %}
+
+        {% if item.modified_stamp %}
+            at {{ item.modified_stamp|default:"-"|date:'M. j Y' }}
+        {% endif %}
+        </div>
 </div>
 <div class="row form-group">
     <div class="col-sm-5">Archived</div>
-    <div class="col-sm-7">Archived by: {{ item.archived_by.label }}
-        at {{ item.archived_stamp|default:"-"|date:'M. j Y' }}</div>
+    <div class="col-sm-7">
+        {% if item.archived_by %}
+            by: {{ item.archived_by.label }}
+        {% endif %}
+
+        {% if item.archived_stamp %}
+            at {{ item.archived_stamp|default:"-"|date:'M. j Y' }}
+        {% endif %}
+    </div>
 </div>
 <div class="row form-group">
     <div class="col-sm-5">Not active</div>

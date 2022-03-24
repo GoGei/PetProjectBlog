@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'', include('Admin.Home.urls')),
     url(r'^posts/', include('Admin.Posts.urls')),
     url(r'^contacts/', include('Admin.Contacts.urls')),
+    url(r'^about/', include('Admin.About.urls')),
 ]
 
 handler401 = handler401_view

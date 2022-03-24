@@ -1,0 +1,7 @@
+{% if record.from_date and record.to_date %}
+    {{ record.from_date }} - {{ record.to_date }}
+{% elif record.from_date %}
+    From {{ record.from_date }}
+{% else %}
+    -
+{% endif %}

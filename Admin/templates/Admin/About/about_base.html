@@ -1,0 +1,10 @@
+{% extends 'Admin/base.html' %}
+
+{% block head-label %}
+    About
+{% endblock %}
+
+{% block breadcrumbs %}
+    <li class="breadcrumb-item"><a href="{% url 'admin-index' %}">Home</a></li>
+    <li class="breadcrumb-item active"><a href="{% url 'about-list' %}">About</a></li>
+{% endblock %}
