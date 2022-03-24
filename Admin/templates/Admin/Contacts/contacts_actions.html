@@ -1,0 +1,8 @@
+<a href="{% url 'contacts-edit' record.id %}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+{% if record.is_active %}
+    <a href="{% url 'contacts-archive' record.id %}" class="btn btn-warning"><i class="fa fa-trash"></i></a>
+{% else %}
+    <a href="{% url 'contacts-restore' record.id %}" class="btn btn-info"><i class="fa fa-reply"></i></a>
+{% endif %}
+<a href="{% url 'contacts-delete' record.id %}" class="btn btn-danger"><i class="fa fa-close"></i></a>
+<a href="{% url 'contacts-view' record.id %}" class="btn btn-secondary"><i class="fa fa-eye"></i></a>

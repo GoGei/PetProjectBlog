@@ -5,9 +5,8 @@ from django.db.models import Q
 class BaseFilter(django_filters.FilterSet):
     BASE_FILTER_FIELDS = ['is_active', 'search']
     SEARCH_FIELDS = []
-    is_active = django_filters.ChoiceFilter(label='Is active', empty_label='Not selected', null_value=None,
-                                            choices=[('true', 'Active'), ('false', 'Not active')],
-                                            method='is_active_filter')
+    is_active = django_filters.ChoiceFilter(label='Is active', empty_label='Not selected', method='is_active_filter',
+                                            choices=[('true', 'Active'), ('false', 'Not active')])
     search = django_filters.CharFilter(label='Search', method='search_qs')
 
     def is_active_filter(self, queryset, name, value):

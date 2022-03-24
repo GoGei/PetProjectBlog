@@ -1,0 +1,10 @@
+{% extends 'Admin/Contacts/contacts_base.html' %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="breadcrumb-item active">Edit</li>
+{% endblock %}
+
+{% block body %}
+    {% include 'base_form.html' with form=form %}
+{% endblock %}

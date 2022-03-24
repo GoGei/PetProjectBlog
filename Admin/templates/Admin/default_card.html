@@ -18,12 +18,12 @@
         at {{ item.archived_stamp|default:"-"|date:'M. j Y' }}</div>
 </div>
 <div class="row form-group">
-    <div class="col-sm-5">Active</div>
+    <div class="col-sm-5">Not active</div>
     <div class="col-sm-7">
         {% if item.is_active %}
-            <label class="label label-success">Default Label</label>
+            <label class="label label-success">Active</label>
         {% else %}
-            <label class="label label-warning">Default Label</label>
+            <label class="label label-warning">Not active</label>
         {% endif %}
     </div>
 </div>

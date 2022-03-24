@@ -8,9 +8,9 @@ class Contacts(CrmMixin):
     LINK = 'link'
     EMAIL = 'email'
     FIELD_TYPE = (
-        ('Phone', PHONE),
-        ('Link', LINK),
-        ('Email', EMAIL),
+        (PHONE, 'Phone'),
+        (LINK, 'Link'),
+        (EMAIL, 'Email'),
     )
 
     description = models.CharField(max_length=50)

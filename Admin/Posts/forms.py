@@ -18,12 +18,10 @@ class PostsFilter(BaseFilter):
 
 
 class PostForm(forms.ModelForm):
-    title = forms.CharField(label='Title', max_length=255, required=True,
-                            widget=forms.TextInput(attrs={'class': 'form-control'}))
-    heading = forms.CharField(label='Heading', max_length=255, required=False,
-                              widget=forms.TextInput(attrs={'class': 'form-control'}))
+    title = forms.CharField(label='Title', max_length=255, required=True)
+    heading = forms.CharField(label='Heading', max_length=255, required=False)
     text = forms.CharField(label='Text', max_length=4048, required=True,
-                           widget=forms.Textarea(attrs={'class': 'form-control'}))
+                           widget=forms.Textarea())
 
     class Meta:
         model = Posts
