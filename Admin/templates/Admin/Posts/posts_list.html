@@ -2,5 +2,12 @@
 {% load django_tables2 %}
 
 {% block body %}
-    {% render_table table %}
+    <div class="card-header">
+        <div class="d-flex justify-content-between">
+            <div class="d-flex align-items-center">{{ table.title }}</div>
+            <a type="button" class="btn btn-success" href="{% url 'posts-add' %}">Add</a>
+        </div>
+    </div>
+    {% include 'Admin/Posts/posts_filter_form.html' with filter=filter %}
+    {% render_table table.body %}
 {% endblock %}

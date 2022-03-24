@@ -1,8 +1,8 @@
-<form action="" method="post">
+<form action="" method="post" novalidate>
     {% csrf_token %}
     {% include 'base_non_field_error_block.html' %}
     {% for field in form.body %}
-        {% include 'base_form_field.html' with field=field %}
+        {% include 'base_form_field.html' with field=field inline_form=inline_form %}
     {% endfor %}
     {% include 'base_buttons.html' with buttons=form.buttons %}
 </form>

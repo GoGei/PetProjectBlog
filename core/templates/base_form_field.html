@@ -1,11 +1,17 @@
-<div class="form-group {% if field.errors %}has-error{% endif %} {% if field.is_hidden %}d-none{% endif %}">
-    {% if field.field.required %}
-        <label for="{{ field.id_for_label }}"><strong>{{ field.label }}*</strong></label>
-    {% else %}
-        <label for="{{ field.id_for_label }}"><strong>{{ field.label }}</strong></label>
-    {% endif %}
+{% load widget_tweaks %}
 
-    {{ field }}
+<div class="form-group row {% if field.errors %}has-error{% endif %} {% if field.is_hidden %}d-none{% endif %}">
+    <label for="{{ field.id_for_label }}" class="{% if inline_form %}col-sm-2 col-form-label{% endif %}">
+        {% if field.field.required %}
+            <strong>{{ field.label }}*</strong>
+        {% else %}
+            {{ field.label }}
+        {% endif %}
+    </label>
+
+    <div class="{% if inline_form %}col-sm-10{% endif %}">
+        {% render_field field class="form-control" %}
+    </div>
 
     {% include 'base_field_error_block.html' %}
 </div>

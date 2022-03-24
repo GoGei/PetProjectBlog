@@ -66,6 +66,12 @@
                     {% block breadcrumbs %}
                     {% endblock %}
                 </ol>
+
+                {% include 'Admin/messages.html' %}
+
+                {% block actions %}
+                {% endblock %}
+
                 {% block body %}
                 {% endblock %}
             </div>
@@ -80,9 +86,11 @@
     </div>
 </div>
 <script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
 <script src="{% static 'js/admin/scripts.js' %}"></script>
-<script src="{% static 'js/admin/datatables-simple-demo.js' %}"></script>
+<script src="{% static 'js/admin/datatables.js' %}"></script>
 
 {% block extrajs %}
 {% endblock %}

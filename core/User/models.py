@@ -49,3 +49,7 @@ class User(CrmMixin, AbstractBaseUser):
 
     def __str__(self):
         return self.email
+
+    @property
+    def label(self):
+        return self.email

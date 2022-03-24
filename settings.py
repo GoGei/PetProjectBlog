@@ -24,7 +24,7 @@ BASE_DIR = os.path.normpath(os.path.join(os.path.dirname(__file__))) + '/'
 SECRET_KEY = 'django-insecure-!ry!@k4bglwpj8uli+@i1bi_zc-qb5cx*t#hqkztg&kp#tcy+7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_hosts',
     'django_tables2',
+    'django_filters',
+    'widget_tweaks',
     'core.Utils',
     'core.User',
     'core.Posts',

@@ -1,0 +1,23 @@
+{#{% if filter %}#}
+{#    <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#filterForm"><i#}
+{#            class="fa fa-filter"></i></a>#}
+{##}
+{#    {% include 'base_modal_filter_form.html' with filter=filter %}#}
+{#{% endif %}#}
+
+{% load widget_tweaks %}
+
+{% if filter %}
+    {% with filter.body.form as filter_form %}
+        <form action="" method="get" class="form-inline datatable-form">
+            <div class="form-group row">
+                {% for field in filter_form %}
+                    <div class="col">
+                        <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>
+                        {% render_field field class="form-control" name=field.id_for_label %}
+                    </div>
+                {% endfor %}
+            </div>
+        </form>
+    {% endwith %}
+{% endif %}

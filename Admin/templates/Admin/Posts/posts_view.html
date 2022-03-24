@@ -1,0 +1,32 @@
+{% extends 'Admin/Posts/posts_base.html' %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="breadcrumb-item active">View</li>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row form-group">
+                <div class="col-sm-5">Title</div>
+                <div class="col-sm-7">{{ post.title|default:"-" }}</div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-5">Heading</div>
+                <div class="col-sm-7">{{ post.heading|default:"-" }}</div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            {% include 'Admin/default_card.html' with item=post %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="row form-group">
+            <div class="col-sm-1">Text</div>
+            <div class="col-sm-11">{{ post.text|default:"-"|safe|escape }}</div>
+        </div>
+    </div>
+    <a type="button" class="btn btn-info btn-block" href="{% url 'posts-edit' post.id %}">Edit</a>
+    <a type="button" class="btn btn-info btn-block" href="{% url 'posts-list' %}">Back to list</a>
+{% endblock %}
