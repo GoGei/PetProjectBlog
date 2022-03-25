@@ -1,4 +1,5 @@
 import django_filters
+from django import forms
 from django.db.models import Q
 
 
@@ -7,7 +8,8 @@ class BaseFilter(django_filters.FilterSet):
     SEARCH_FIELDS = []
     is_active = django_filters.ChoiceFilter(label='Is active', empty_label='Not selected', method='is_active_filter',
                                             choices=[('true', 'Active'), ('false', 'Not active')])
-    search = django_filters.CharFilter(label='Search', method='search_qs')
+    search = django_filters.CharFilter(label='Search', method='search_qs',
+                                       widget=forms.TextInput(attrs={'type': 'search'}))
 
     def is_active_filter(self, queryset, name, value):
         if value == 'true':
