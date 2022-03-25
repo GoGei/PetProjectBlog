@@ -161,6 +161,7 @@ STATICFILES_FINDERS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ITEMS_PER_PAGE = 20
+POSTS_PER_PAGE = 6
 
 CKEDITOR_UPLOAD_PATH = os.path.join(BASE_DIR, 'media/ckeditoruploads/')
 

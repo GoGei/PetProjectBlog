@@ -4,6 +4,6 @@
     {% if post.heading %}
         <h2>{{ post.heading }}</h2>
     {% endif %}
-    <p>{{ post.text|safe|escape|truncatechars:400 }}</p>
-    <p><a href="{% url 'home-post-view' post.id %}">Read more</a></p>
+    <p>{{ post.text|safe|escape|truncatechars_html:400 }}</p>
+    <p><a href="{% url 'home-post-view' post.slug %}">Read more</a></p>
 </div>

@@ -16,6 +16,10 @@
                 <div class="col-sm-5">Heading</div>
                 <div class="col-sm-7">{{ post.heading|default:"-" }}</div>
             </div>
+            <div class="row form-group">
+                <div class="col-sm-5">Slug</div>
+                <div class="col-sm-7">{{ post.slug|default:"-" }}</div>
+            </div>
         </div>
         <div class="col-sm-6">
             {% include 'Admin/default_card.html' with item=post %}

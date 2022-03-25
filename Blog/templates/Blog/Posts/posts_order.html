@@ -1,0 +1,13 @@
+{% load filters %}
+
+<nav class="blog-pagination">
+    {% url_get_field request 'order' as order_by %}
+    {% with filters='order page' values='newer 1' %}
+        <a href="?{% url_replace_multiple request filters.split values.split %}"
+           class="btn {% if not order_by or order_by == 'newer' %}btn-outline-primary{% else %}btn-outline-secondary{% endif %}">Newer</a>
+    {% endwith %}
+    {% with filters='order page' values='older 1' %}
+        <a href="?{% url_replace_multiple request filters.split values.split %}"
+           class="btn {% if order_by == 'older' %}btn-outline-primary{% else %}btn-outline-secondary{% endif %}">Older</a>
+    {% endwith %}
+</nav>

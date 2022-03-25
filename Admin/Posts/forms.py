@@ -32,12 +32,20 @@ class PostForm(forms.ModelForm):
         self.author = kwargs.pop('author', None)
         super(PostForm, self).__init__(*args, **kwargs)
 
+    def clean_title(self):
+        cleaned_data = self.cleaned_data
+        title = cleaned_data.get('title')
+        if title and not self.Meta.model.is_allowed_to_assign_slug(instance_pk=self.initial.get('pk'), title=title):
+            self.add_error('title', 'This title generates slug, that is already exists! Please, change it.')
+        return title
+
     def save(self, commit=True):
         instance = super(PostForm, self).save(commit=False)
 
         if self.author:
             instance.author = self.author
 
+        instance.assign_slug()
         if commit:
             instance.save()
         return instance
