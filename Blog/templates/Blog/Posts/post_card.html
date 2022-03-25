@@ -1,0 +1,9 @@
+<div class="blog-post">
+    <h2 class="blog-post-title">{{ post.title }}</h2>
+    <p class="blog-post-meta">{{ post.created_stamp|date:'d-M-Y' }}</p>
+    {% if post.heading %}
+        <h2>{{ post.heading }}</h2>
+    {% endif %}
+    <p>{{ post.text|safe|escape|truncatechars:400 }}</p>
+    <p><a href="{% url 'home-post-view' post.id %}">Read more</a></p>
+</div>

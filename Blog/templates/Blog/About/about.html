@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extracss %}
-    <link rel="stylesheet" href="{% static 'css/blog/css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog/blog.css' %}">
 {% endblock %}
 
 {% block navbar %}
@@ -12,9 +12,9 @@
 {% block body %}
     {% if abouts or contacts %}
         <main role="main" class="container">
+            <h1>About page</h1>
             <div class="row">
                 <div class="col-md-8 blog-main">
-                    <h1>About page</h1>
                     {% for about in abouts %}
                         <div class="blog-post">
                             <h2 class="blog-post-title">{{ about.title }}</h2>
@@ -28,10 +28,10 @@
                             {% if  about.heading %}
                                 <h2>{{ about.heading }}</h2>
                             {% endif %}
-                            <p>{{ about.text }}</p>
+                            <p>{{ about.text|safe|escape }}</p>
                         </div>
                     {% empty %}
-                        <h2>No about info added yet by admin</h2>
+                        <h2>No about info added yet</h2>
                     {% endfor %}
                 </div>
                 <aside class="col-md-4 blog-sidebar">
@@ -67,6 +67,6 @@
             </div>
         </main>
     {% else %}
-        {% include 'Blog/Home/pages/empty_page.html' with message='Contacts and about info not added yet by admin' %}
+        {% include 'Blog/Home/empty_page.html' with message='Contacts and about info not added yet' %}
     {% endif %}
 {% endblock %}

@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     {% load static %}
-    <meta charset="UTF-8">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
     <title>Title</title>
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}"/>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog/style.css' %}">
     {% block extracss %}
     {% endblock %}
 </head>
@@ -16,6 +20,13 @@
 {% endblock %}
 {% block body %}
 {% endblock %}
-{% include 'Blog/footer.html' %}
+{#{% include 'Blog/footer.html' %}#}
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/moment-with-locales.min.js' %}"></script>
+{% block extrajs %}
+{% endblock %}
 </body>
 </html>

@@ -13,6 +13,9 @@
     <link href="{% static 'css/bootstrap-datepicker.css' %}" rel="stylesheet">
     <link href="{% static 'css/font-awesome/css/all.css' %}" rel="stylesheet">
     <link href="{% static 'css/admin/styles.css' %}" rel="stylesheet"/>
+
+    {% block extracss %}
+    {% endblock %}
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
