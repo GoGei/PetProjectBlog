@@ -1,5 +1,6 @@
 import django_filters
 from django import forms
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from core.Posts.models import Posts
 from core.User.models import User
@@ -21,7 +22,7 @@ class PostForm(forms.ModelForm):
     title = forms.CharField(label='Title', max_length=255, required=True)
     heading = forms.CharField(label='Heading', max_length=255, required=False)
     text = forms.CharField(label='Text', max_length=4048, required=True,
-                           widget=forms.Textarea())
+                           widget=CKEditorUploadingWidget(config_name='admin'))
 
     class Meta:
         model = Posts

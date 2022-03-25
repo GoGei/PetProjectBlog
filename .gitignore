@@ -10,4 +10,5 @@ env/
 .idea/
 
 static/
+media/
 config/

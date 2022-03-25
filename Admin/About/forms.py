@@ -1,5 +1,6 @@
 import django_filters
 from django import forms
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 from core.About.models import About
 from core.Utils.filtersets import BaseFilter
@@ -29,7 +30,7 @@ class AboutForm(forms.ModelForm):
     title = forms.CharField(label='Title', max_length=255, required=True)
     heading = forms.CharField(label='Heading', max_length=255, required=False)
     text = forms.CharField(label='Text', max_length=4048, required=True,
-                           widget=forms.Textarea())
+                           widget=CKEditorUploadingWidget(config_name='admin'))
     order_number = forms.IntegerField(label='Order number', min_value=0, required=False)
     from_date = forms.DateField(label='From', required=False,
                                 widget=forms.DateInput(attrs={'type': 'date'}))
