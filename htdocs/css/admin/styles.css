@@ -11772,3 +11772,7 @@ body {
   background-color: #2A2E36;
   color: #8B91A0;
 }
+
+.breadcrumb {
+  background-color: transparent;
+}

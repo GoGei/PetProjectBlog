@@ -43,6 +43,6 @@
             <div class="col-sm-11">{{ about.text|default:"-"|safe|escape }}</div>
         </div>
     </div>
-    <a type="button" class="btn btn-info btn-block" href="{% url 'about-edit' about.id %}">Edit</a>
-    <a type="button" class="btn btn-info btn-block" href="{% url 'about-list' %}">Back to list</a>
+    <a type="button" class="btn btn-info" href="{% url 'about-edit' about.id %}">Edit</a>
+    <a type="button" class="btn btn-info" href="{% url 'about-list' %}">Back to list</a>
 {% endblock %}

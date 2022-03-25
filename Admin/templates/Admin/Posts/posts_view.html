@@ -27,6 +27,6 @@
             <div class="col-sm-11">{{ post.text|default:"-"|safe|escape }}</div>
         </div>
     </div>
-    <a type="button" class="btn btn-info btn-block" href="{% url 'posts-edit' post.id %}">Edit</a>
-    <a type="button" class="btn btn-info btn-block" href="{% url 'posts-list' %}">Back to list</a>
+    <a type="button" class="btn btn-info" href="{% url 'posts-edit' post.id %}">Edit</a>
+    <a type="button" class="btn btn-info" href="{% url 'posts-list' %}">Back to list</a>
 {% endblock %}

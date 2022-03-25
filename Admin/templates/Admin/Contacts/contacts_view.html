@@ -29,6 +29,6 @@
             {% include 'Admin/default_card.html' with item=contact %}
         </div>
     </div>
-    <a type="button" class="btn btn-info btn-block" href="{% url 'contacts-edit' contact.id %}">Edit</a>
-    <a type="button" class="btn btn-info btn-block" href="{% url 'contacts-list' %}">Back to list</a>
+    <a type="button" class="btn btn-info" href="{% url 'contacts-edit' contact.id %}">Edit</a>
+    <a type="button" class="btn btn-info" href="{% url 'contacts-list' %}">Back to list</a>
 {% endblock %}
