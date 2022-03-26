@@ -12,7 +12,7 @@ class ActiveQuerySet(models.QuerySet):
             item.archive(archived_by)
 
     def ordered(self):
-        return self.all().order_by('created_stamp')
+        return self.all().order_by('-created_stamp')
 
 
 class CrmMixin(models.Model):
