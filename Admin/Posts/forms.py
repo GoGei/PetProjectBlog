@@ -35,7 +35,7 @@ class PostForm(forms.ModelForm):
     def clean_title(self):
         cleaned_data = self.cleaned_data
         title = cleaned_data.get('title')
-        if title and not self.Meta.model.is_allowed_to_assign_slug(instance_pk=self.initial.get('pk'), title=title):
+        if title and not self.Meta.model.is_allowed_to_assign_slug(instance=self.instance, title=title):
             self.add_error('title', 'This title generates slug, that is already exists! Please, change it.')
         return title
 

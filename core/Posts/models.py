@@ -38,11 +38,11 @@ class Posts(CrmMixin, PostClassifier):
         return self.title
 
     @classmethod
-    def is_allowed_to_assign_slug(cls, title, instance_pk=None):
+    def is_allowed_to_assign_slug(cls, title, instance=None):
         slug = slugify(title)
         qs = cls.objects.filter(slug=slug)
-        if instance_pk:
-            qs = qs.exclude(pk=instance_pk)
+        if instance:
+            qs = qs.exclude(pk=instance.pk)
         return not qs.exists()
 
     def assign_slug(self):
