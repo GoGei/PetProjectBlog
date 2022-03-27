@@ -4,6 +4,12 @@ from core.Utils.Mixins.models import CrmMixin
 
 class Appointment(CrmMixin):
     FORMAT = '%H:%M %d.%m.%Y'
+    START = 'start'
+    END = 'end'
+    WORKING_HOURS = {
+        START: 8,
+        END: 18,
+    }
     patient = models.ForeignKey('User.Patient', on_delete=models.PROTECT)
     doctor = models.ForeignKey('User.Doctor', on_delete=models.PROTECT)
     date = models.DateField()

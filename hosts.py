@@ -4,4 +4,5 @@ host_patterns = patterns(
     '',
     host(r'', 'Blog.urls', name='blog'),
     host(r'admin', 'Admin.urls', name='admin'),
+    host(r'api', 'Api.urls', name='api'),
 )

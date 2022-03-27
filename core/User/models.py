@@ -56,7 +56,9 @@ class User(CrmMixin, AbstractBaseUser):
 
     @property
     def label(self):
-        return ' '.join([self.first_name, self.last_name]) or self.email or self.id
+        if self.first_name and self.last_name:
+            return ' '.join([self.first_name, self.last_name])
+        return self.email or self.id
 
 
 class Patient(CrmMixin):
