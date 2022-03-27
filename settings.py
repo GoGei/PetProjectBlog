@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'core.Contacts',
     'core.About',
     'core.TODO',
+    'core.Speciality',
+    'core.Appointment',
 ]
 
 AUTH_USER_MODEL = 'User.User'
