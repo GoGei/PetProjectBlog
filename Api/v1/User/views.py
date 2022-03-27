@@ -80,7 +80,7 @@ class PatientFilter(rest_framework.FilterSet):
 class DoctorFilter(rest_framework.FilterSet):
     class Meta:
         model = Doctor
-        fields = ['user__is_active', 'user__is_staff', 'user__is_superuser']
+        fields = ['user__is_active', 'user__is_staff']
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):

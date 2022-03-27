@@ -9,7 +9,7 @@ from core.Appointment.models import Appointment
 class AppointmentFilter(rest_framework.FilterSet):
     class Meta:
         model = Appointment
-        fields = ['is_paid']
+        fields = ['is_paid', 'date']
 
 
 class AppointmentViewSet(viewsets.ModelViewSet):
