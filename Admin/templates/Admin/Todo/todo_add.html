@@ -1,0 +1,10 @@
+{% extends 'Admin/Todo/todo_base.html' %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="breadcrumb-item active">Add</li>
+{% endblock %}
+
+{% block body %}
+    {% include 'base_form.html' with form=form %}
+{% endblock %}

@@ -1,0 +1,7 @@
+<a href="{% url 'todo-edit' record.id %}" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+{% if record.is_active %}
+    <a href="{% url 'todo-archive' record.id %}" class="btn btn-warning"><i class="fa fa-trash"></i></a>
+{% else %}
+    <a href="{% url 'todo-restore' record.id %}" class="btn btn-info"><i class="fa fa-reply"></i></a>
+{% endif %}
+<a href="{% url 'todo-view' record.id %}" class="btn btn-secondary"><i class="fa fa-eye"></i></a>

@@ -7,6 +7,9 @@ class ActiveQuerySet(models.QuerySet):
     def active(self):
         return self.filter(archived_stamp__isnull=True)
 
+    def archived(self):
+        return self.filter(archived_stamp__isnull=False)
+
     def archive(self, archived_by=None):
         for item in self:
             item.archive(archived_by)

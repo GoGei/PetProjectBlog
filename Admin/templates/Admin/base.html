@@ -49,17 +49,22 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Blog pages</div>
-                    <a class="nav-link" href="{% url 'posts-list' %}">
+                    <a class="nav-link {% block posts-page %}{% endblock %}" href="{% url 'posts-list' %}">
                         <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
                         Posts
                     </a>
-                    <a class="nav-link" href="{% url 'contacts-list' %}">
+                    <a class="nav-link {% block contacts-page %}{% endblock %}" href="{% url 'contacts-list' %}">
                         <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
                         Contacts
                     </a>
-                    <a class="nav-link" href="{% url 'about-list' %}">
+                    <a class="nav-link {% block about-page %}{% endblock %}" href="{% url 'about-list' %}">
                         <div class="sb-nav-link-icon"><i class="fas fa-info-circle"></i></div>
                         About
+                    </a>
+                    <div class="sb-sidenav-menu-heading">TODOs</div>
+                    <a class="nav-link {% block todo-page %}{% endblock %}" href="{% url 'todo-list' %}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        TODOs
                     </a>
                 </div>
             </div>
@@ -79,9 +84,6 @@
                 </ol>
 
                 {% include 'Admin/messages.html' %}
-
-                {% block actions %}
-                {% endblock %}
 
                 {% block body %}
                 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'Admin/Todo/todo_base.html' %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+    <li class="breadcrumb-item active">View</li>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row form-group">
+                <div class="col-sm-1">ID</div>
+                <div class="col-sm-11">{{ todo.id|default:"-" }}</div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-1">Title</div>
+                <div class="col-sm-11">{{ todo.title|default:"-" }}</div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-1">Priority</div>
+                <div class="col-sm-11">{{ todo.priority|default:"-" }}</div>
+            </div>
+            <div class="row form-group">
+            <div class="col-sm-1">Text</div>
+            <div class="col-sm-11">{{ todo.text|default:"-"|safe|escape }}</div>
+        </div>
+        </div>
+    </div>
+    <a type="button" class="btn btn-info" href="{% url 'todo-edit' todo.id %}">Edit</a>
+    <a type="button" class="btn btn-info" href="{% url 'todo-list' %}">Back to list</a>
+{% endblock %}

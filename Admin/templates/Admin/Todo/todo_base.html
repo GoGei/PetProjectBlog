@@ -1,12 +1,12 @@
 {% extends 'Admin/base.html' %}
 
-{% block about-page %} active {% endblock %}
+{% block todo-page %} active {% endblock %}
 
 {% block head-label %}
-    About
+    Todo
 {% endblock %}
 
 {% block breadcrumbs %}
     <li class="breadcrumb-item"><a href="{% url 'admin-index' %}">Home</a></li>
-    <li class="breadcrumb-item active"><a href="{% url 'about-list' %}">About</a></li>
+    <li class="breadcrumb-item active"><a href="{% url 'todo-list' %}">Todo</a></li>
 {% endblock %}
