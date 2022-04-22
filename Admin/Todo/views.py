@@ -110,5 +110,5 @@ def todo_clear(request):
     todo = TODOModel.objects.archived()
     count = todo.count()
     todo.delete()
-    messages.success(request, f'TODO successfully cleaned %s instances' % count)
+    messages.success(request, f'TODO successfully cleaned {count} instances')
     return redirect(reverse('todo-list'), host='admin')

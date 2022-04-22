@@ -44,7 +44,7 @@ def dump_db():
 
     date = datetime.now().strftime("%Y-%m-%d_%H%M")
     dump_name = f'dumps/{db_name}_{date}.sql'
-    dump_zip_name = dump_name+'.bz2'
+    dump_zip_name = dump_name + '.bz2'
 
     with cd(PROJECT_ROOT):
         local('mkdir -p dumps')
@@ -59,3 +59,9 @@ def deploy_local(branch=None):
     local('pip3 install -r requirements.txt')
     local('./manage.py migrate')
     local('./manage.py collectstatic --noinput')
+
+
+@task
+def check():
+    local('python manage.py check')
+    local('time flake8 ./core/ ./Admin ./Blog')
