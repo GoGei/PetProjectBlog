@@ -39,9 +39,6 @@ class User(CrmMixin, AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
-    first_name = models.CharField(max_length=100, null=True)
-    last_name = models.CharField(max_length=100, null=True)
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -55,6 +52,4 @@ class User(CrmMixin, AbstractBaseUser):
 
     @property
     def label(self):
-        if self.first_name and self.last_name:
-            return ' '.join([self.first_name, self.last_name])
         return self.email or self.id
