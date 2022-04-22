@@ -20,17 +20,17 @@ BASE_DIR = os.path.normpath(os.path.join(os.path.dirname(__file__))) + '/'
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!ry!@k4bglwpj8uli+@i1bi_zc-qb5cx*t#hqkztg&kp#tcy+7'
+SECRET_KEY = None
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-SITE_URL = 'blog.local'
+SITE_URL = 'personal-blog.local'
 SITE_SCHEME = "http"
 PARENT_HOST = ".%s" % SITE_URL
-HOST_PORT = '4403'
+HOST_PORT = None
 SITE = "%s://%s:%s" % (SITE_SCHEME, SITE_URL, HOST_PORT)
 
 # Application definition
@@ -49,15 +49,12 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'ckeditor',
     'ckeditor_uploader',
-    'rest_framework',
     'core.Utils',
     'core.User',
     'core.Posts',
     'core.Contacts',
     'core.About',
     'core.TODO',
-    'core.Speciality',
-    'core.Appointment',
 ]
 
 AUTH_USER_MODEL = 'User.User'
@@ -183,12 +180,4 @@ CKEDITOR_CONFIGS = {
             ['RemoveFormat', 'Source']
         ]
     }
-}
-
-
-REST_FRAMEWORK = {
-    'COERCE_DECIMAL_TO_STRING': False,
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
-    ]
 }
