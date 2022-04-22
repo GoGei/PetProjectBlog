@@ -181,3 +181,13 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
+
+CUSTOM_LOGGER_CONFIGS = {
+    'active': True,
+    'path': os.path.join(BASE_DIR, 'logger/'),
+    'name': 'user_activity',
+    'format': '{time} {level} {message}',
+    'rotation': '50MB',
+    'compression': 'zip',
+    'serialize': True,
+}

@@ -47,7 +47,7 @@ def todo_add(request):
 
     if form_body.is_valid():
         todo = form_body.save()
-        messages.success(request, f'Todo {todo.title} added')
+        messages.success(request, f'TODO {todo.title} added')
         return redirect(reverse('todo-list'), host='admin')
 
     form = {
@@ -72,7 +72,7 @@ def todo_edit(request, todo_id):
     if form_body.is_valid():
         todo = form_body.save()
         todo.modify(request.user)
-        messages.success(request, f'Todo {todo.title} edited')
+        messages.success(request, f'TODO {todo.title} edited')
         return redirect(reverse('todo-list'), host='admin')
 
     form = {
@@ -93,7 +93,7 @@ def todo_view(request, todo_id):
 def todo_archive(request, todo_id):
     todo = get_object_or_404(TODOModel, pk=todo_id)
     todo.archive(request.user)
-    messages.success(request, f'Todo {todo.title} archived')
+    messages.success(request, f'TODO {todo.title} archived')
     return redirect(reverse('todo-list'), host='admin')
 
 
@@ -101,7 +101,7 @@ def todo_archive(request, todo_id):
 def todo_restore(request, todo_id):
     todo = get_object_or_404(TODOModel, pk=todo_id)
     todo.restore(request.user)
-    messages.success(request, f'Todo {todo.title} restored')
+    messages.success(request, f'TODO {todo.title} restored')
     return redirect(reverse('todo-list'), host='admin')
 
 
@@ -110,5 +110,5 @@ def todo_clear(request):
     todo = TODOModel.objects.archived()
     count = todo.count()
     todo.delete()
-    messages.success(request, f'Todo successfully cleaned %s instances' % count)
+    messages.success(request, f'TODO successfully cleaned %s instances' % count)
     return redirect(reverse('todo-list'), host='admin')

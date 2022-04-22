@@ -8,6 +8,6 @@ class PostsTable(tables.Table):
 
     class Meta:
         model = Posts
-        fields = ('author__email', 'title', 'heading', 'is_active', 'actions')
+        fields = ('title', 'heading', 'is_active', 'actions')
         attrs = {'class': 'dataTable-table'}
         template_name = "django_tables2/bootstrap4.html"

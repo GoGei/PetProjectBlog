@@ -14,3 +14,7 @@ media/
 config/
 
 dumps/
+
+logger/
+*.log
+*.log.*

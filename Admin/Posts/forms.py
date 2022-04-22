@@ -15,7 +15,7 @@ class PostsFilter(BaseFilter):
 
     class Meta:
         model = Posts
-        fields = ['author'] + BaseFilter.BASE_FILTER_FIELDS
+        fields = BaseFilter.BASE_FILTER_FIELDS
 
 
 class PostForm(forms.ModelForm):
