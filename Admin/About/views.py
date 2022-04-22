@@ -9,7 +9,7 @@ from .forms import AboutFilter, AboutForm
 from .tables import AboutTable
 
 
-@manager_required()
+@manager_required
 def about_list_view(request):
     about = About.objects.all().ordered()
 
@@ -34,7 +34,7 @@ def about_list_view(request):
                    'filter': table_filter})
 
 
-@manager_required()
+@manager_required
 def about_add(request):
     if '_cancel' in request.POST:
         return redirect(reverse('about-list'), host='admin')
@@ -55,7 +55,7 @@ def about_add(request):
                   {'form': form})
 
 
-@manager_required()
+@manager_required
 def about_edit(request, about_id):
     about = get_object_or_404(About, pk=about_id)
 
@@ -79,13 +79,13 @@ def about_edit(request, about_id):
                   {'form': form})
 
 
-@manager_required()
+@manager_required
 def about_view(request, about_id):
     about = get_object_or_404(About, pk=about_id)
     return render(request, 'Admin/About/about_view.html', {'about': about})
 
 
-@manager_required()
+@manager_required
 def about_archive(request, about_id):
     about = get_object_or_404(About, pk=about_id)
     about.archive(request.user)
@@ -93,7 +93,7 @@ def about_archive(request, about_id):
     return redirect(reverse('about-list'), host='admin')
 
 
-@manager_required()
+@manager_required
 def about_restore(request, about_id):
     about = get_object_or_404(About, pk=about_id)
     about.restore(request.user)
@@ -101,7 +101,7 @@ def about_restore(request, about_id):
     return redirect(reverse('about-list'), host='admin')
 
 
-@manager_required()
+@manager_required
 def about_delete(request, about_id):
     about = get_object_or_404(About, pk=about_id)
     about.delete()

@@ -3,8 +3,8 @@ from core.About.models import About
 
 
 class TodoTable(tables.Table):
-    is_active = tables.BooleanColumn()
-    actions = tables.TemplateColumn(template_name='Admin/Todo/todo_actions.html')
+    is_active = tables.BooleanColumn(orderable=False)
+    actions = tables.TemplateColumn(template_name='Admin/Todo/todo_actions.html', orderable=False)
 
     class Meta:
         model = About

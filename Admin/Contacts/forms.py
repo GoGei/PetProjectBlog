@@ -7,7 +7,7 @@ from core.Utils.fields import PhoneField
 
 
 class ContactsFilter(BaseFilter):
-    SEARCH_FIELDS = ['description']
+    SEARCH_FIELDS = ['description', 'phone', 'link', 'email']
 
     field_type = django_filters.ChoiceFilter(label='Contact type', empty_label='Not selected',
                                              choices=Contacts.FIELD_TYPE)
@@ -20,7 +20,8 @@ class ContactsFilter(BaseFilter):
 class ContactsForm(forms.ModelForm):
     description = forms.CharField(label='Description', max_length=50, required=True)
     placeholder = forms.CharField(label='Placeholder', max_length=50, required=False)
-    phone = PhoneField(label='Phone', max_length=20, required=False)
+    phone = PhoneField(label='Phone', max_length=20, required=False,
+                       widget=forms.TextInput(attrs={"class": "form-control phone-number"}))
     link = forms.URLField(label='Link', max_length=255, required=False)
     email = forms.EmailField(label='Email', max_length=255, required=False)
 

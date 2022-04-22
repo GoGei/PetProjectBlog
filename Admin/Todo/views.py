@@ -10,7 +10,7 @@ from .forms import TodoFilter, TodoForm
 from .tables import TodoTable
 
 
-@manager_required()
+@manager_required
 def todo_list_view(request):
     todo = TODOModel.objects.all()
     todo = todo.annotate(active=Case(When(archived_stamp__isnull=True, then=True),
@@ -38,7 +38,7 @@ def todo_list_view(request):
                    'filter': table_filter})
 
 
-@manager_required()
+@manager_required
 def todo_add(request):
     if '_cancel' in request.POST:
         return redirect(reverse('todo-list'), host='admin')
@@ -59,7 +59,7 @@ def todo_add(request):
                   {'form': form})
 
 
-@manager_required()
+@manager_required
 def todo_edit(request, todo_id):
     todo = get_object_or_404(TODOModel, pk=todo_id)
 
@@ -83,13 +83,13 @@ def todo_edit(request, todo_id):
                   {'form': form})
 
 
-@manager_required()
+@manager_required
 def todo_view(request, todo_id):
     todo = get_object_or_404(TODOModel, pk=todo_id)
     return render(request, 'Admin/Todo/todo_view.html', {'todo': todo})
 
 
-@manager_required()
+@manager_required
 def todo_archive(request, todo_id):
     todo = get_object_or_404(TODOModel, pk=todo_id)
     todo.archive(request.user)
@@ -97,7 +97,7 @@ def todo_archive(request, todo_id):
     return redirect(reverse('todo-list'), host='admin')
 
 
-@manager_required()
+@manager_required
 def todo_restore(request, todo_id):
     todo = get_object_or_404(TODOModel, pk=todo_id)
     todo.restore(request.user)
@@ -105,7 +105,7 @@ def todo_restore(request, todo_id):
     return redirect(reverse('todo-list'), host='admin')
 
 
-@manager_required()
+@manager_required
 def todo_clear(request):
     todo = TODOModel.objects.archived()
     count = todo.count()

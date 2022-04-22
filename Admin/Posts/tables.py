@@ -3,8 +3,8 @@ from core.Posts.models import Posts
 
 
 class PostsTable(tables.Table):
-    is_active = tables.BooleanColumn()
-    actions = tables.TemplateColumn(template_name='Admin/Posts/posts_actions.html')
+    is_active = tables.BooleanColumn(orderable=False)
+    actions = tables.TemplateColumn(template_name='Admin/Posts/posts_actions.html', orderable=False)
 
     class Meta:
         model = Posts

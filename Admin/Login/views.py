@@ -26,7 +26,7 @@ def admin_login_view(request):
                   {'form': form})
 
 
-@manager_required()
+@manager_required
 def admin_logout_view(request):
     logout(request)
     return redirect(reverse('admin-login', host='admin'))

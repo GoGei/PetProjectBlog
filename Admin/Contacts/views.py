@@ -9,7 +9,7 @@ from .forms import ContactsFilter, ContactsForm
 from .tables import ContactsTable
 
 
-@manager_required()
+@manager_required
 def contact_list_view(request):
     contacts = Contacts.objects.all().ordered()
 
@@ -34,7 +34,7 @@ def contact_list_view(request):
                    'filter': table_filter})
 
 
-@manager_required()
+@manager_required
 def contact_add(request):
     if '_cancel' in request.POST:
         return redirect(reverse('contacts-list'), host='admin')
@@ -55,7 +55,7 @@ def contact_add(request):
                   {'form': form})
 
 
-@manager_required()
+@manager_required
 def contact_edit(request, contact_id):
     contact = get_object_or_404(Contacts, pk=contact_id)
 
@@ -79,13 +79,13 @@ def contact_edit(request, contact_id):
                   {'form': form})
 
 
-@manager_required()
+@manager_required
 def contact_view(request, contact_id):
     contact = get_object_or_404(Contacts, pk=contact_id)
     return render(request, 'Admin/Contacts/contacts_view.html', {'contact': contact})
 
 
-@manager_required()
+@manager_required
 def contact_archive(request, contact_id):
     contact = get_object_or_404(Contacts, pk=contact_id)
     contact.archive(request.user)
@@ -93,7 +93,7 @@ def contact_archive(request, contact_id):
     return redirect(reverse('contacts-list'), host='admin')
 
 
-@manager_required()
+@manager_required
 def contact_restore(request, contact_id):
     contact = get_object_or_404(Contacts, pk=contact_id)
     contact.restore(request.user)
@@ -101,7 +101,7 @@ def contact_restore(request, contact_id):
     return redirect(reverse('contacts-list'), host='admin')
 
 
-@manager_required()
+@manager_required
 def contact_delete(request, contact_id):
     contact = get_object_or_404(Contacts, pk=contact_id)
     contact.delete()

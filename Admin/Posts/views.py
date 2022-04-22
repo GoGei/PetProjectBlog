@@ -9,7 +9,7 @@ from .forms import PostsFilter, PostForm
 from .tables import PostsTable
 
 
-@manager_required()
+@manager_required
 def post_list_view(request):
     posts = Posts.objects.select_related('author').all().ordered()
 
@@ -34,7 +34,7 @@ def post_list_view(request):
                    'filter': table_filter})
 
 
-@manager_required()
+@manager_required
 def post_add(request):
     if '_cancel' in request.POST:
         return redirect(reverse('posts-list'), host='admin')
@@ -56,7 +56,7 @@ def post_add(request):
                   {'form': form})
 
 
-@manager_required()
+@manager_required
 def post_edit(request, post_id):
     post = get_object_or_404(Posts, pk=post_id)
 
@@ -80,13 +80,13 @@ def post_edit(request, post_id):
                   {'form': form})
 
 
-@manager_required()
+@manager_required
 def post_view(request, post_id):
     post = get_object_or_404(Posts, pk=post_id)
     return render(request, 'Admin/Posts/posts_view.html', {'post': post})
 
 
-@manager_required()
+@manager_required
 def post_archive(request, post_id):
     post = get_object_or_404(Posts, pk=post_id)
     post.archive(request.user)
@@ -94,7 +94,7 @@ def post_archive(request, post_id):
     return redirect(reverse('posts-list'), host='admin')
 
 
-@manager_required()
+@manager_required
 def post_restore(request, post_id):
     post = get_object_or_404(Posts, pk=post_id)
     post.restore(request.user)
@@ -102,7 +102,7 @@ def post_restore(request, post_id):
     return redirect(reverse('posts-list'), host='admin')
 
 
-@manager_required()
+@manager_required
 def post_delete(request, post_id):
     post = get_object_or_404(Posts, pk=post_id)
     post.delete()

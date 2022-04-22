@@ -4,8 +4,8 @@ from core.About.models import About
 
 class AboutTable(tables.Table):
     date = tables.TemplateColumn(template_name='Admin/About/about_table_date.html')
-    is_active = tables.BooleanColumn()
-    actions = tables.TemplateColumn(template_name='Admin/About/about_actions.html')
+    is_active = tables.BooleanColumn(orderable=False)
+    actions = tables.TemplateColumn(template_name='Admin/About/about_actions.html', orderable=False)
 
     class Meta:
         model = About

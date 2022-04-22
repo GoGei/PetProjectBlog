@@ -26,3 +26,6 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 $('.datepicker').datepicker();
+
+
+$(".phone-number").inputmask("mask", { "mask": "+380(99)-999-9999" });
