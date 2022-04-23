@@ -38,17 +38,26 @@ def runserver():
 
 
 @task
-def dump_db():
-    user = 'postgres'
+def dump_db(user='postgres'):
     db_name = dj_settings.DATABASES['default']['NAME']
 
     date = datetime.now().strftime("%Y-%m-%d_%H%M")
     dump_name = f'dumps/{db_name}_{date}.sql'
-    dump_zip_name = dump_name + '.bz2'
 
     with cd(PROJECT_ROOT):
         local('mkdir -p dumps')
-        local(f'sudo -u {user} pg_dump {db_name} > {dump_name} | bzip2 -9 > {dump_zip_name}')
+        local(f'sudo -u {user} pg_dump {db_name} > {dump_name} | bzip2 -9 > {dump_name}.bz2')
+
+
+@task
+def restore_db():
+    db_user = dj_settings.DATABASES['default']['USER']
+    db_name = dj_settings.DATABASES['default']['NAME']
+
+    with cd(PROJECT_ROOT):
+        with lcd('dumps'):
+            last_dump = 'dumps/' + local('ls -1tr', capture=True).stdout.strip().split('\n')[-1]
+        local(f'sudo psql -U {db_user} -d {db_name} < {last_dump}')
 
 
 @task
