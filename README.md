@@ -1,2 +1,2 @@
-# PetProjectBlog
-This is Django pet project blog
+# Django Personal Blog
+This is Django pet project personal blog
