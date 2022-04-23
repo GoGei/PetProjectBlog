@@ -11,4 +11,4 @@ class TODOModel(CrmMixin):
         db_table = 'todo_model'
 
     def __str__(self):
-        return f'TODO: {self.id}'
+        return self.title

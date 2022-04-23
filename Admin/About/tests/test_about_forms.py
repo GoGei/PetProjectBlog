@@ -38,6 +38,7 @@ class AboutFormTestCase(TestCase):
 class AboutFilterTestCase(TestCase):
     def setUp(self):
         self.form = AboutFilter
+        self.about = AboutFactory.create()
 
     def test_about_filter_valid(self):
         data = about_filter_form_data.copy()
@@ -45,7 +46,7 @@ class AboutFilterTestCase(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_about_filter_obj_found(self):
-        about = AboutFactory.create()
+        about = self.about
         data = {
             'search': about.title[:10],
             'from_date': about.from_date - datetime.timedelta(days=2),
@@ -60,7 +61,7 @@ class AboutFilterTestCase(TestCase):
             self.assertIn(about, form.qs)
 
     def test_about_filter_obj_not_found(self):
-        about = AboutFactory.create()
+        about = self.about
         data = {
             'search': about.title[:10:-1],
             'from_date': about.from_date + datetime.timedelta(days=2),
@@ -73,3 +74,12 @@ class AboutFilterTestCase(TestCase):
         for key, value in data.items():
             form = self.form({key: value})
             self.assertNotIn(about, form.qs)
+
+    def test_about_search_success(self):
+        about = self.about
+        search_to = [about.title[:10],
+                     ]
+        for search in search_to:
+            data = {'search': search}
+            form = self.form(data, queryset=About.objects.all())
+            self.assertIn(about, form.qs)

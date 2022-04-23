@@ -15,7 +15,7 @@ class AboutFilter(BaseFilter):
 
     class Meta:
         model = About
-        fields = ['from_date', 'to_date'] + BaseFilter.BASE_FILTER_FIELDS
+        fields = BaseFilter.BASE_FILTER_FIELDS
 
     def from_date_filter(self, queryset, name, value):
         queryset = queryset.filter(from_date__gte=value)

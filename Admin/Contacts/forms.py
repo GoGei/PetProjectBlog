@@ -14,7 +14,7 @@ class ContactsFilter(BaseFilter):
 
     class Meta:
         model = Contacts
-        fields = ['field_type'] + BaseFilter.BASE_FILTER_FIELDS
+        fields = BaseFilter.BASE_FILTER_FIELDS
 
 
 class ContactsForm(forms.ModelForm):

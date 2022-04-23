@@ -10,7 +10,7 @@ class PostsFactory(factory.DjangoModelFactory):
     title = fuzzy.FuzzyText(length=255)
     heading = fuzzy.FuzzyText(length=255)
     text = fuzzy.FuzzyText(length=1024)
-    slug = factory.LazyAttribute(lambda o: slugify(o.title))
+    slug = factory.LazyAttribute(lambda o: slugify(o.title)[:255])
 
     class Meta:
         model = Posts
