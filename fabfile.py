@@ -27,9 +27,8 @@ def _launch_django(project_path):
                 server_address = dj_settings.SITE_URL
 
     with lcd(project_path):
-        local('./manage.py runserver %s:%s' % (
-            server_address,
-            port), capture=False)
+        insecure = not dj_settings.DEBUG
+        local(f'./manage.py runserver {server_address}:{port} {"--insecure" if insecure else ""}', capture=False)
 
 
 @task
