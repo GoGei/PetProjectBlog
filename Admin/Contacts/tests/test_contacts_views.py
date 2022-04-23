@@ -76,18 +76,21 @@ class ContactsViewTestCase(TestCase):
         self.assertContains(response, self.contacts)
 
     def test_contacts_archive_success(self):
-        response = self.client.post(reverse('contacts-archive', host='admin', args=[self.contacts.id]), HTTP_HOST='admin')
+        response = self.client.post(reverse('contacts-archive', host='admin', args=[self.contacts.id]),
+                                    HTTP_HOST='admin')
         self.assertEqual(response.status_code, 302)
         self.contacts.refresh_from_db()
         self.assertTrue(self.contacts.archived_stamp)
 
     def test_contacts_restore_success(self):
-        response = self.client.post(reverse('contacts-restore', host='admin', args=[self.contacts.id]), HTTP_HOST='admin')
+        response = self.client.post(reverse('contacts-restore', host='admin', args=[self.contacts.id]),
+                                    HTTP_HOST='admin')
         self.assertEqual(response.status_code, 302)
         self.contacts.refresh_from_db()
         self.assertFalse(self.contacts.archived_stamp)
 
     def test_contacts_delete_success(self):
-        response = self.client.post(reverse('contacts-delete', host='admin', args=[self.contacts.id]), HTTP_HOST='admin')
+        response = self.client.post(reverse('contacts-delete', host='admin', args=[self.contacts.id]),
+                                    HTTP_HOST='admin')
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Contacts.objects.all().exists())
