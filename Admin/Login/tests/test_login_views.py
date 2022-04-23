@@ -6,7 +6,7 @@ from django_hosts import reverse
 from core.User.factories import SuperuserFactory
 
 
-class AboutViewTestCase(TestCase):
+class LoginViewTestCase(TestCase):
     def setUp(self):
         self.password = str(uuid.uuid4())
         self.user = SuperuserFactory.create(is_staff=True, is_superuser=True, is_active=True)
@@ -62,3 +62,9 @@ class AboutViewTestCase(TestCase):
         response = self.client.post(reverse('admin-login', host='admin'), HTTP_HOST='admin', data=data)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Please enter a correct email and password')
+
+    def test_logout_success(self):
+        self.client.login(username=self.user.email, password=self.password)
+        response = self.client.post(reverse('admin-logout', host='admin'), HTTP_HOST='admin')
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, expected_url=reverse('admin-login', host='admin'))
