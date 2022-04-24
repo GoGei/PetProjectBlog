@@ -2,7 +2,7 @@
 # *.css linguist-detectable=false
 # *.js linguist-detectable=false
 
-htdocs/** linguist-vendored
+# htdocs/** linguist-vendored
 
 htdocs/css/** linguist-vendored
 htdocs/images/** linguist-vendored
