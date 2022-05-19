@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 from django.conf import settings
 
 
@@ -13,6 +14,10 @@ class ActiveQuerySet(models.QuerySet):
     def archive(self, archived_by=None):
         for item in self:
             item.archive(archived_by)
+
+    def restore(self, restored_by=None):
+        for item in self:
+            item.restore(restored_by)
 
     def ordered(self):
         return self.all().order_by('-created_stamp')
@@ -51,3 +56,45 @@ class CrmMixin(models.Model):
 
     def is_active(self):
         return not bool(self.archived_stamp)
+
+
+class SlugifyMixin(models.Model):
+    SLUGIFY_FIELD = ''
+    slug = models.SlugField(max_length=255, unique=True, null=True, db_index=True)
+
+    class Meta:
+        abstract = True
+
+    @classmethod
+    def is_allowed_to_assign_slug(cls, value, instance=None):
+        slug = slugify(value)
+        qs = cls.objects.filter(slug=slug)
+        if instance:
+            qs = qs.exclude(pk=instance.pk)
+        return not qs.exists()
+
+    def assign_slug(self):
+        slug = slugify(getattr(self, self.SLUGIFY_FIELD))
+        self.slug = slug if len(slug) <= 255 else slug[:255]
+        self.save()
+        return self
+
+
+class LikeMixin(models.Model):
+    is_liked = models.BooleanField(null=True, default=None)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE, related_name='+')
+
+    class Meta:
+        abstract = True
+
+    def like(self):
+        self.is_liked = True
+        self.save()
+
+    def dislike(self):
+        self.is_liked = False
+        self.save()
+
+    def deactivate(self):
+        self.is_liked = None
+        self.save()

@@ -24,6 +24,7 @@ SECRET_KEY = 'secret-key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+INSECURE = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -178,7 +179,9 @@ CKEDITOR_CONFIGS = {
              'JustifyRight', 'JustifyBlock'],
             ['Link', 'Unlink'],
             ['RemoveFormat', 'Source']
-        ]
+        ],
+        'toolbarCanCollapse': True,
+        'width': '100%',
     }
 }
 
