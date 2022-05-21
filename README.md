@@ -40,7 +40,7 @@ Create database
 ```sh
 sudo su postgres
 psql
-CREATE USER <db_user_name> WITH ENCRPPTED PASSWORD '<db_user_password>' superuser;
+CREATE USER <db_user_name> WITH ENCRIPPTED PASSWORD '<db_user_password>' superuser;
 CREATE DATABASE <db_name> WITH OWNER <db_user_name> ENCODING 'UTF8';
 ```
 Set hosts
